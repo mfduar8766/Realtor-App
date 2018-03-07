@@ -1,0 +1,44 @@
+      <div class="img-thumbnail">
+        <img src="{{homes.image}}.png">
+
+        <div class="caption">
+          <div *ngIf="!homes.showDetails"></div>
+          <h4>
+            <span class="label label-primary">
+              {{homes.type}}
+            </span>
+          </h4>
+          <h3>
+            <i class="glyphicon glyphicon-tag"></i>
+            {{homes.price | currency: 'USD':true}}
+          </h3>
+          <h4>
+            <i class="glyphicon glyphicon-home"></i>
+            {{homes.address}}
+          </h4>
+          <hr>
+
+          <button class="btn btn-sm btn-success" *ngIf="!homes.showDetails" (click)="homes.showDetails = !homes.showDetails"> Details</button>
+        </div>
+
+        <div *ngIf="homes.showDetails">
+          <div class="details">
+            <h4>
+              <span class="label label-primary">
+                Beds: {{homes.bedrooms}}
+              </span>
+              <span class="label label-primary">
+                Baths: {{homes.bathrooms}}
+              </span>
+              <span class="label label-primary">
+                SqFt: {{homes.area}}
+              </span>
+            </h4>
+
+            <p>{{homes.description}}</p>
+            <hr>
+
+            <button class="btn btn-sm btn-danger" (click)="homes.showDetails = !homes.showDetails">Close</button>
+          </div>
+        </div>
+      </div>
