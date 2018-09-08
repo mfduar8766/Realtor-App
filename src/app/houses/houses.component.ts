@@ -11,15 +11,15 @@ import {UtilService} from '../util.service';
 export class HousesComponent implements OnInit {
   public homesData = [];
   public sortFields: Array<string> = ['address', 'area', 'bathrooms', 'bedrooms', 'price', 'type'];
-  public sortDirection: string = 'asc';
-  public sortField: string = 'price';
+  public sortDirection: 'asc';
+  public sortField: 'price';
 
 
   constructor(private housingService: HousingService, private utilService: UtilService) { }
 
-  ngOnInit() {//Get new home to start in front of the list by using the spread operator ie: ...//
+  ngOnInit() {
     this.housingService.getHousingData().subscribe(data => this.homesData = data);
-    this.housingService.newHomesSubject.subscribe(data => this.homesData = [data, ...this.homesData]); 
+    this.housingService.newHomesSubject.subscribe(data => this.homesData = [data, ...this.homesData]);
   }
 
 }
